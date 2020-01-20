@@ -48,24 +48,24 @@ $$
 >   Using $f(\mu) = x\ln\mu, \frac{d}{d\mu}f = \frac{x}{\mu}$
 
 $$
-\frac{d}{d\mu}\ln p(D|\mu) = \sum_n[\frac{x_n}{\mu}-\frac{1-x_n}{1-\mu}]
+\frac{d}{d\mu}\ln p(D|\mu) = \sum_{n=1}^{N}[\frac{x_n}{\mu}-\frac{1-x_n}{1-\mu}]
 $$
 
 Let $\frac{d}{d\mu}\ln p(D|\mu) =0$
 $$
 \begin{aligned}
-\sum_n[\frac{x_n}{\mu}-\frac{1-x_n}{1-\mu}] &= 0\\
-\sum_n\frac{x_n}{\mu} &= \sum_n \frac{1-x_n}{1-\mu} \\
-\frac{1}{\mu}\sum_nx_n &= \frac{1}{1-\mu} \sum_n [1-x_n]\\
-\frac{1}{\mu}\sum_nx_n &= \frac{N}{1-\mu} - \frac{1}{1-\mu}\sum_nx_n\\
-\frac{1}{\mu\cancel{(1-\mu)}}\sum_nx_n &= \frac{N}{\cancel{1-\mu}}\\
+\sum_N[\frac{x_n}{\mu}-\frac{1-x_n}{1-\mu}] &= 0\\
+\sum_N\frac{x_n}{\mu} &= \sum_N \frac{1-x_n}{1-\mu} \\
+\frac{1}{\mu}\sum_Nx_n &= \frac{1}{1-\mu} \sum_N [1-x_n]\\
+\frac{1}{\mu}\sum_Nx_n &= \frac{N}{1-\mu} - \frac{1}{1-\mu}\sum_Nx_n\\
+\frac{1}{\mu\cancel{(1-\mu)}}\sum_Nx_n &= \frac{N}{\cancel{1-\mu}}\\
 \end{aligned}
 $$
 
 
 >   ***Maximiser:***
 >   $$
->   \mu_{ML} = \frac{\sum_nx_n}{N}
+>   \mu_{ML} = \frac{\sum_Nx_n}{N}
 >   $$
 
 ### Terminology
@@ -109,18 +109,16 @@ $$
 >   Beta(\mu|a,b) = \frac{\Gamma(a+b)}{\Gamma(a)\Gamma(b)} \mu^{(a-1)}(1-\mu)^{(b-1)}
 >   $$
 >
->   >   $$
->   >   \Gamma(n) = (n-1)! \forall n\in \N^+
->   >   $$
->
+>   >   ***Note that***: $\Gamma(n) = (n-1)! \forall n\in \N^+$
+>   
 >   Ignore the normalisation:
->   $$
+>$$
 >   Beta(\mu|a,b) \propto \mu^{(a-1)}(1-\mu)^{(b-1)}
 >   $$
 >   
->
+>   
 >   Mean:
->   $$
+>$$
 >   E(\mu|a,b) = \frac{a}{a+b}
 >   $$
 >   Variance:
@@ -244,8 +242,6 @@ $$
 ## Maximum Likelihood Curve Fitting
 
 >   ***Why assume Gaussian?***  Gaussian Distribution is a convinient default assumption, it makes the maths easy
-
-M - order
 
 ![截屏2020-01-20下午12.36.04](../src/截屏2020-01-20下午12.36.04.png)
 
