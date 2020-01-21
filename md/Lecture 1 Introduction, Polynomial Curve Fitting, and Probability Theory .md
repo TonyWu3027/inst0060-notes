@@ -2,9 +2,9 @@
 
 ## Notations
 
-![截屏2020-01-14上午10.44.43](../src/截屏2020-01-14上午10.44.43.png)
+<img src="../src/截屏2020-01-14上午10.44.43.png" alt="截屏2020-01-14上午10.44.43" style="zoom:33%;" />
 
->   using Classifying Hand Written Digits as example
+>   using _Classifying Hand Written Digits_ as example
 
 -   A training set of $N$ digits
 -   Each digit, $i$, is an image, representing as an ***input vector of pixel values*** $\boldsymbol{x}_i$
@@ -60,12 +60,12 @@ The inputs may be ***pre-processed*** to reduce variability in the inputs.
 ### Fitting with Linear Model
 
 $$
-y(x,\boldsymbol{w}) = w_0 + w_1 x + w_2 x^2 + \dots + w_M x^M = \sum_{j=0}^{M}w_j x^j
+y(x,\bold{w}) = w_0 + w_1 x + w_2 x^2 + \dots + w_M x^M = \sum_{j=0}^{M}w_j x^j
 $$
 
 -   $M$ is the ***order of the polynomial***
--   ***Polynomial coefficients*** $w_0, \dots, w_M$ are collected into vector $\boldsymbol{w}$
--   $y(x,\boldsymbol{w})$ is non-linear in $x$, but it is linear in $\boldsymbol{w}$ and so we call this a ***linear model***
+-   ***Polynomial coefficients*** $w_0, \dots, w_M$ are collected into vector $\bold{w}$
+-   $y(x,\bold{w})$ is non-linear in $x$, but it is linear in $\bold{w}$ and so we call this a ***linear model***
 
 >   We estimate values for $\boldsymbol{w}$ by fitting the function to training data. Fit the function by ***minising*** an ***error function***
 
@@ -73,11 +73,11 @@ $$
 
 A widely used error function is the ***Sum of Square Errors***
 $$
-E(\boldsymbol{w}) = \frac{1}{2}\sum_{n= 1}^{N} [y(x_n,\boldsymbol{w}) - t_n]^2
+E(\boldsymbol{w}) = \frac{1}{2}\sum_{n= 1}^{N} [y(x_n,\bold{w}) - t_n]^2
 $$
 
--   ***Best Fit*** $\boldsymbol{w}^* = \arg \min_\boldsymbol{w}E(\boldsymbol{w})$
--   ***Perfect Fit*** if $E(\boldsymbol{w}^*) = 0$
+-   ***Best Fit*** $\boldsymbol{w}^* = \arg \min_\boldsymbol{w}E(\bold{w})$
+-   ***Perfect Fit*** if $E(\bold{w}^*) = 0$
 
 -   Bigger differences are increasingly ***penalised***
 
@@ -96,7 +96,7 @@ We need an objective way to test our fit
 
 ***Root Mean Squared Error (RMSE)***
 $$
-E_{RMS} = \sqrt{\frac{2}{N}E(\boldsymbol{w}^*)}
+E_{RMS} = \sqrt{\frac{2}{N}E(\bold{w}^*)}
 $$
 
 >   Comparable for different amounts of data
@@ -106,7 +106,7 @@ $$
 ### Indirect Evidence of Over-fitting
 
 -   Dramatic increse of $E_{RMS}$ of training set and the difference between the $E_{RMS}$ of training set and testing set  as degree gets larger
--   Magnitude of $\boldsymbol{w}_i^*$ is extremely large 
+-   Magnitude of $\bold{w}_i^*$ is extremely large 
 
 ![截屏2020-01-14下午3.18.51](../src/截屏2020-01-14下午3.18.51.png)
 
@@ -114,7 +114,7 @@ $$
 
 ![截屏2020-01-14下午3.22.09](../src/截屏2020-01-14下午3.22.09.png)
 
->   For $M = 9$, the magnitude of some $\boldsymbol{w}_i^*$ are very large, and the model makes some extreme predictions
+>   For $M = 9$, the magnitude of some $\bold{w}_i^*$ are very large, and the model makes some extreme predictions
 
 ***Dilemma***: Complex Models(more expressive) **v.** Over-fitting
 
@@ -124,15 +124,15 @@ $$
 
 Using a new ***error function*** that ***penalises*** extreme parameter values
 $$
-\tilde{E}(\boldsymbol{w}) = \frac{1}{2}\sum_{n=1}^{N}[y(x_n,\boldsymbol{w})-t_n]^2 + \frac{\lambda}{2}
+\tilde{E}(\bold{w}) = \frac{1}{2}\sum_{n=1}^{N}[y(x_n,\bold{w})-t_n]^2 + \frac{\lambda}{2}
 $$
 Where 
 $$
-|| \boldsymbol{w}||^2 = \boldsymbol{w}^T\boldsymbol{w} = w_0^2 + w_1^2 + \dots + w_M^2
+|| \bold{w}||^2 = \bold{w}^T\bold{w} = w_0^2 + w_1^2 + \dots + w_M^2
 $$
- Minimising error function
+ Minimising ***error function***
 $$
-\boldsymbol{w}^* = \arg\min_w \tilde{E}(\boldsymbol{w})
+\bold{w}^* = \arg\min_w \tilde{E}(\bold{w})
 $$
 ![截屏2020-01-14下午3.50.30](/Users/tonywu/Desktop/Academic Affairs/INST0060 Foundations of Machine Learning and Data Science/src/截屏2020-01-14下午3.50.30.png)
 
@@ -160,6 +160,8 @@ If we sample $(X,Y)$ a large number of times $N$:
 
 >   ***Probability mass functions*** capture the relative frequency of outcomes
 
+### Probability
+
 ***Marginal Probability***:
 $$
 Pr(X = X_I) = p_X(x_i) = \frac{c_i}{N}
@@ -170,5 +172,71 @@ Pr(X = x_i, Y = y_j) = p_{XY}(x_i,y_j) = \frac{n_{ij}}{N}
 $$
 ***Conditional Probability:***
 $$
-Pr(Y = y_j | X = x_i) = p_{Y|X}(y_j|x_i) = \frac{n_{ij}}{c_i} 
+Pr(Y = y_j | X = x_i) = p_{Y|X}(y_j|x_i) = \frac{n_{ij}}{c_i}
 $$
+
+### Rule
+
+***Sum Rule:***
+$$
+p_X(x) = \frac{c_i}{N} = \frac{1}{N}\sum_jn_{ij} = \sum_jp_{xy}(x_i,y_j)
+$$
+***Product Rule:***
+$$
+p_{XY}(x_i,y_j) = \frac{n_{ij}}{N} = \frac{n_{ij}}{c_i}\times\frac{c_i}{N} = p_{Y|X}(y_j|x_i)p_{X}(x_i)
+$$
+
+#### Application in 3 Random Variables Case
+
+$$
+\begin{aligned}
+p(x,y) & = \sum_zp(x,y,z)\\
+p(x,y,z) &= p(x,y|z)p(z)\\
+& = p(y,z|x)p(x)
+\end{aligned}
+$$
+
+If $p_{XY}(x,y) = p_X(x)p_{Y}(y)$, we say $X$ and $Y$ are ***independent***
+
+#### Application of Probability Rule
+
+***Randome Variables:***
+
+-   ***A*** disease status (***ill*** or ***healthy***)
+-   ***B*** blood test (***+ve*** or ***-ve***)
+
+$$
+\begin{aligned}
+p_{AB}(a,b) &= p_{A|B}(a|b)p_B(b) = p_{B|A}(b|a)p_A(a)\\
+\\
+p_A(ill) &= Pr(person \space has \space disease) = 1\% \\
+p_B(+ve) &= Pr(person \space has \space +ve \space blood \space test) = 10\% \\
+p_{B|A}(+ve | ill) &= Pr(blood \space test \space is \space +ve \space given \space person \space is \space ill ) = 70\% \\
+p_{A|B}(ill | +ve) &= Pr(person \space is \space ill \space given \space blood \space test \space is \space +ve) = 7\%
+\end{aligned}
+$$
+
+### Reasoning
+
+$$
+p(y|x) = \frac{p(x|y)p(y)}{p(x)}
+$$
+
+$p(x) = \sum_yp(x|y)p(y)$ ***normalises*** the equation
+
+Practically:
+$$
+\begin{aligned}
+p(y|x) &\propto p(x|y)p(y)\\
+posterior &\propto likelihood \times prior
+\end{aligned}
+$$
+
+## Frequentist v. Bayesian
+
+>   In the frequentist perspective, probability distributions represent ***expected outcomes given a large number of trails***, e.g.
+>   $$
+>   E[X] = \lim_{N \to \infty} \frac{1}{N}\sum_n x_n
+>   $$
+
+>   ***Bayesian Inference*** involves shfting the perspective in order to reason about vents that may ***happen only once***, in which ***probability is a measure of belief***
