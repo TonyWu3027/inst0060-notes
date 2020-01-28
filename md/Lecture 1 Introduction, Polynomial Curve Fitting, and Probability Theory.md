@@ -240,3 +240,4 @@ $$
 >   $$
 
 >   ***Bayesian Inference*** involves shfting the perspective in order to reason about vents that may ***happen only once***, in which ***probability is a measure of belief***
+
