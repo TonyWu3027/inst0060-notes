@@ -73,7 +73,7 @@ p(\bold{x},C_1) \gt p(\bold{x},C_0) \Longrightarrow
 \bold{x}\in R_1
 $$
 
->   Multivariate Integration:
+>   *Multivariate Integration*:
 >
 >   -   Non-square region, $R$, delt with by varying bounds
 >
@@ -147,33 +147,27 @@ Within some regions of data-space:
 
 ![截屏2020-02-22下午11.03.36](../src/截屏2020-02-22下午11.03.36.png)
 
-## Three Approaches
+## Generative Models
 
--   ***Generative Models*** - infer the joint probability $p(\bold{x},C_k)$ *(or $p(\bold{x}|C_k)$ and $p(C_k)$ separately)*, use ***Bayes Rule*** to calculate posterior class probabilities: 
-
+Infer the joint probability $p(\bold{x},C_k)$ *(or $p(\bold{x}|C_k)$ and $p(C_k)$ separately)*, use ***Bayes Rule*** to calculate posterior class probabilities: 
 $$
 p(C_k|\bold{x}) = \frac{p(\bold{x}|C_k)p(C_k)}{p(\bold{x})}
 $$
 
 and then use decision theory to determine class membership
 
--   ***Discriminative Models (Probabilistic)*** - ***directly infer the posterior*** probabilities, $p(C_k|\bold{x})$, then use decision theory to determine class membership
--   ***Discriminative Models (Non-Probabilistic)*** - find a discriminant function $f(\bold{x})$ which ***directly maps each input, $\bold{x}$, onto a class label.***
+### Advantages:
 
-### Generative Models:
-
-#### Advantages:
-
--   We can generate synthetic data by sampling from model
+-   We can ***generate*** synthetic data by sampling from model
 -   Either learn joint distribution $p(\bold{x},C_k)$ or class-prior $p(C_k)$ and class-conditional $p(\bold{x}|C_k)$ separately
 -   Can calculate the marginal density of data, $p(\bold{x})$, useful for detecting outliers in new data (poor predictive performance)
 
-#### Disadvantages
+### Disadvantages
 
 -   Demanding in terms of data and computation, particularly if inputs, $\bold{x}$, have high dimension
 -   Class conditionals may have unnessessary detail, much cheaper to compute class-posterior directly $p(C_k|\bold{x})$
 
-#### Generative vs Discriminative 
+### Generative vs Discriminative
 
 ![截屏2020-02-22下午11.17.35](../src/截屏2020-02-22下午11.17.35.png)
 
@@ -184,11 +178,19 @@ Probabilistic discriminative models can still
 -   compensate for ***class prior*** - when training data has different class mixture from deployment, e.g. X-ray diagnosis classifier trained from hopsital dta, deployed at clinic
 -   ***combine models*** - break into sub-problems, then combine independent predictions
 
+## Discriminative Models (Probabilistic)
+
+***Directly infer the posterior*** probabilities, $p(C_k|\bold{x})$, then use decision theory to determine class membership
+
+## Discriminative Models (Non-Probabilistic)
+
+Find a discriminant function $f(\bold{x})$ which ***directly maps each input, $\bold{x}$, onto a class label.***
+
 ## Discriminant Function
 
 A ***discriminant*** is a function that takes input $\bold{x}$ and directly assigns it to one of $K$ classes
 
--   Restrict attention to linear discriminants, i.e. decision surfaces are hyperplanes
+-   Restrict attention to ***linear discriminants***, i.e. decision surfaces are hyperplanes
 -   Do this in two stages:
 
 $$
@@ -197,14 +199,30 @@ $$
 
 ​		for weight vector $\bold{w}$ and bias $w_0$
 
--   We assign $\bold{x}$ to class C_1 if $y(\bold{x}) \ge 0 $ and to $C_0$ otherwise
+-   We assign $\bold{x}$ to class $C_1$ if $y(\bold{x}) \ge 0 $ and to $C_0$ otherwise
 -   Decision boundary defined by $y(\bold{x}) = 0$  
 
 ### Linear Discriminants, 2 Classes
 
+![截屏2020-03-06下午5.34.26](../src/截屏2020-03-06下午5.34.26.png)
+
 ### Multiple Classes: One-versus-the-rest
 
-### Multiple Classes； One-versus-one
+<img src="/Users/tonywu/Desktop/Academic Affairs/INST0060 Foundations of Machine Learning and Data Science/src/截屏2020-03-06下午5.37.31.png" alt="截屏2020-03-06下午5.37.31" style="zoom:30%;" />
+
+Extend 2-class discriminants to $K$-class discriminants for ***one-versus-the-rest*** approach:
+
+-   Create $K-1$ classifiers, each separating two classes: $C_k$ from points not in $C_k$
+-   Problems in regions ***assigned to more than one class***
+
+### Multiple Classes: One-versus-one
+
+<img src="../src/截屏2020-03-06下午5.40.23.png" alt="截屏2020-03-06下午5.40.23" style="zoom:30%;" />
+
+Extend 2-class dirscrimnants to $K$-class discriminants fro ***one-versus-one*** approach:
+
+-   Create $\frac{K(K-1)}{2}$ binary discriminants, one for each pair of classes
+-   Problems in regions ***with no dominant class***
 
 ### A better Discriminant fro $K$-Classes
 
@@ -214,7 +232,7 @@ $$
 y_k(\bold{x}) = \bold{w}_k^T\bold{x} +w_k0
 $$
 
--   assign $\bold{x}$ to class $C_k$ if $y_k(\bold{x}) \gt y_j(\bold{x})$ for all $j \ne k$
+-   assign $\bold{x}$ to class $C_k$ if $y_k(\bold{x}) \gt y_j(\bold{x})$ for all $j \ne k$ 
 -   Boundary between $R_k$ and $R_j$ given by $y_k(\bold{x}) = y_j(\bold{x})$ corresponds to $(D-1)$-dimensional hyperplane
 
 $$
@@ -223,7 +241,7 @@ $$
 
 ​		so same geometric properties as before
 
--   But no ambiguous regions
+-   But ***no ambiguous*** regions
 
 ## Loss Functions for Discriminants
 
@@ -231,7 +249,7 @@ $$
 
 Consider a general classification problem with $K$ classes
 
--   Each class described by separate linear model
+-   Each class described by separate ***linear model***
 
 $$
 y_k(\bold{x}) = \bold{w}^T_k\bold{x} + w_{k0}
@@ -243,7 +261,7 @@ $$
 \bold{y}(\bold{x}) = (y_1(\bold{x}),\dots,y_k(\bold{x}))^T
 $$
 
--   Targets are one-hot vectors
+-   Targets are ***one-hot*** vectors
 
 $$
 \bold{t}_n = (0,\dots,0,1,0,\dots,0)^T
@@ -257,5 +275,61 @@ $$
 
 ### Problems with Least Squares
 
+![截屏2020-03-06下午5.48.37](../src/截屏2020-03-06下午5.48.37.png)
+
+![截屏2020-03-06下午5.50.23](../src/截屏2020-03-06下午5.50.23.png)
+
 ### Fisher's Linear Discriminant: Intuition
+
+For 2-classes, we can view a linear classification model in terms of ***dimensionality reduction***.
+
+-   First project onto a single dimension:
+
+$$
+y = \bold{w}^T\bold{x}
+$$
+
+-   Then place a ***threshold*** on y and classify as class $C_1$ if $y \ge -w_0$ and as calss $C_0$ otherwise. 
+-   Projection leads to a ***loss of information***: classes well separated in D-dimensions may overlap in one dimension
+-   But, we can choose $\bold{w}$ to optimise that separation
+
+### Example: Maximise Projected Mean Distance
+
+![截屏2020-03-06下午6.16.10](../src/截屏2020-03-06下午6.16.10.png)
+
+>   ***Notes***:
+>
+>   ​	A dot product between data-point, $\bold{x}_n \in \R^D$, and weight vector $\bold{w}$ can be thought of as projecting the $D$-dimensional data down onto a signle dimension, say $\bold{x}^T\bold{w} = \bold{w}^T\bold{x} = x_n \in \R$. The projected mean, $m_k$ of the data-points in class $C_k$, can be therefore be thought of in two ways.
+>
+>   First, as the projection of the D-dimensional mean, i.e.:
+>   $$
+>   m_k = \bold{w}^T\bold{m}_k = \bold{w}^T(\frac{\sum_{n\in C_K} \bold{x}_n}{N_k})
+>   $$
+>   Second as the mean of the projected points, i.e.:
+>   $$
+>   m_k =\frac{\sum_{n\in C_K} \bold{w}^T\bold{x}_n}{N_k}
+>   $$
+>   where $x_n = \bold{w}^T\bold{x}_n$. Both are equivalent.
+>
+>   ​	Maiximising the distance between projected means $m_1 - m_0$ while simultaneously ensuring that the projection vector, $\bold{w}$, has unit length $(||\bold{w}|| = \sqrt{\bold{w}^T\bold{w}} = 1)$ is an example of constrained optimisation.
+>
+>   ​	The diagram shows an example dataset with two classes, $C_0$ (blue) and $C_1$ (red). The projection vector $\bold{w}$ runs from $\bold{m}_0$ to $\bold{m}_1$ (along the green line). A histogram of the projected datapoints is shown with x-axis parallel to $\bold{w}$. Note that ***any resulting decision boundary will be orthogonal (at right angles to) the project vector.*** One example decision boundary would be along the green line running from the histogram to the projection vector.
+
+### Class Separation: A Better Way
+
+![截屏2020-03-06下午6.29.32](../src/截屏2020-03-06下午6.29.32.png)
+
+>   ***Notes***:
+>
+>   ​	Maiximising Fisher's criterion now represents a trade-off  between maximising the distance between the means and ensuring that the resulting projected data-points have a small ***within class variance***
+>
+>   ​	The diagram shows the same example dataset as the previous one, the new projection vector $\bold{w}$ points slightly more downwards (along the near vertical green line). A histogram of the projected datapoints is shown with x-axis parallel to $\bold{w}$.
+>
+>   ​	Any resulting decision boundary would again be orthogonal the projcetion vector, One example decision boundary would run along the near horizontal green line from histogram to data-points. This decision boundary shows ***a much better partition of the classes than was possible using the maximum mean distance approach***.
+
+
+
+
+
+
 
