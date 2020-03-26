@@ -24,6 +24,6 @@ The notes are based on lectures of the lecturer _Dr Luke Dickens_ at the Departm
 | 8       | Reinforcement Learning 2: Monte-Carlo Control, Temporal Differences and Q-Learning | 09/03/20         |            |
 | 9       | Unsupervised Learning: Clustering and Mixture of Gaussians                       | 16/03/20         |            |
 | 10      | Neural Networks                                                                  | 23/03/20         |            |
-|Supplement A| Probabilistics | N/A | |
+|Supplement A| Probability Theory | N/A | ✅ |
 |Supplement B1|Data, Features and Approximations| N/A| |
 |Supplement B2|Model Evaluation and Selectoon| N/A| |
