@@ -20,8 +20,8 @@ The notes are based on lectures of the lecturer _Dr Luke Dickens_ at the Departm
 | 4       | The Multivariate Gaussian & Bayesian Regression                                  | 03/02/20         | ✅           |
 | 5       | Classification, Decisions and Discriminants                                      | 10/02/20         | ✅           |
 | 6       | Probabilistic Classification                                                     | 24/02/20         | ✅           |
-| 7       | Reinforcement Learning: Scene Setting & Dynamic Programming                      | 02/03/20         |            |
-| 8       | Reinforcement Learning: Monte-Carlo Control, Temporal Differences and Q-Learning | 09/03/20         |            |
+| 7       | Reinforcement Learning 1: Dynamic Programming & Monte-Carlo Estimation | 02/03/20         | ✅ |
+| 8       | Reinforcement Learning 2: Monte-Carlo Control, Temporal Differences and Q-Learning | 09/03/20         |            |
 | 9       | Unsupervised Learning: Clustering and Mixture of Gaussians                       | 16/03/20         |            |
 | 10      | Neural Networks                                                                  | 23/03/20         |            |
 |Supplement A| Probabilistics | N/A | |
