@@ -25,5 +25,5 @@ The notes are based on lectures of the lecturer _Dr Luke Dickens_ at the Departm
 | 9       | Unsupervised Learning: Clustering and Mixture of Gaussians                       | 16/03/20         |            |
 | 10      | Neural Networks                                                                  | 23/03/20         |            |
 |Supplement A| Probability Theory | N/A | ✅ |
-|Supplement B1|Data, Features and Approximations| N/A| |
+|Supplement B1|Data, Features and Approximations| N/A| ✅ |
 |Supplement B2|Model Evaluation and Selectoon| N/A| |
